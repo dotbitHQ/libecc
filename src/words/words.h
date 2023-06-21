@@ -53,7 +53,7 @@
  * On 8-bit and 16-bit platform, we prefer to let the user decide on the best
  * option (see below)!
  */
-#if defined(__x86_64__) || defined(__i386__) || defined(__ppc64__) || defined(__ppc__) ||\
+#if defined(__x86_64__) || defined(__i386__) || defined(__ppc64__) || defined(__ppc__) || \
     defined(__arm__) || defined(__aarch64__) || defined(__mips__) || defined(__s390x__) ||\
     defined(__SH4__) || defined(__sparc__) || defined(__riscv)
 #define WORDSIZE 64

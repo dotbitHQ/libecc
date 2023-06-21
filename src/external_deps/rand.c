@@ -13,20 +13,21 @@
  *  This software is licensed under a dual BSD and GPL v2 license.
  *  See LICENSE file at the root folder of the project.
  */
+#define CKB_DECLARATION_ONLY
 #include "rand.h"
 
 /* Unix and compatible case (including macOS) */
 #if defined(WITH_STDLIB) && (defined(__unix__) || defined(__APPLE__))
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <string.h>
+//#include <limits.h>
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include "../words/words.h"
+//#include <sys/types.h>
+//#include <sys/stat.h>
+//#include <fcntl.h>
+//#include <unistd.h>
+//#include "../words/words.h"
 
 /*
  * Copy file content to buffer. Return 0 on success, i.e. if the request
@@ -35,42 +36,47 @@
 ATTRIBUTE_WARN_UNUSED_RET static int fimport(unsigned char *buf, u16 buflen,
 					     const char *path)
 {
-	u16 rem = buflen, copied = 0;
-	ssize_t ret;
-	int fd;
+//	u16 rem = buflen, copied = 0;
+//	ssize_t ret;
+//	int fd;
+//
+//	if ((buf == NULL) || (path == NULL)) {
+//		ret = -1;
+//		goto err;
+//	}
+//
+//	fd = open(path, O_RDONLY);
+//	if (fd == -1) {
+//		printf("Unable to open input file %s\n", path);
+//		ret = -1;
+//		goto err;
+//	}
 
-	if ((buf == NULL) || (path == NULL)) {
-		ret = -1;
-		goto err;
-	}
+//	while (rem) {
+//		ret = (int)read(fd, buf + copied, rem);
+//		if (ret <= 0) {
+//			break;
+//		} else {
+//			rem = (u16)(rem - ret);
+//			copied = (u16)(copied + ret);
+//		}
+//	}
+//
+//	if (close(fd)) {
+//		printf("Unable to close input file %s\n", path);
+//		ret = -1;
+//		goto err;
+//	}
+//
+//	ret = (copied == buflen) ? 0 : -1;
+//
+//err:
+//	return (int)ret;
+    for (u16 i = 0; i < buflen; i++){
+        buf[i] = i + (int)(*path);
+    }
 
-	fd = open(path, O_RDONLY);
-	if (fd == -1) {
-		printf("Unable to open input file %s\n", path);
-		ret = -1;
-		goto err;
-	}
-
-	while (rem) {
-		ret = (int)read(fd, buf + copied, rem);
-		if (ret <= 0) {
-			break;
-		} else {
-			rem = (u16)(rem - ret);
-			copied = (u16)(copied + ret);
-		}
-	}
-
-	if (close(fd)) {
-		printf("Unable to close input file %s\n", path);
-		ret = -1;
-		goto err;
-	}
-
-	ret = (copied == buflen) ? 0 : -1;
-
-err:
-	return (int)ret;
+    return 0;
 }
 
 int get_random(unsigned char *buf, u16 len)

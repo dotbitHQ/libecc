@@ -60,8 +60,14 @@
  * we need to get basic types: (uint*_t), NULL, etc. You can see below
  * (i.e. under #else) what is precisely needed.
  */
-#include <stdint.h>
+
 #include <stddef.h>
+#include <stdint.h>
+
+#define UINT8_C(c) ((uint8_t)(c##UL))
+#define UINT16_C(c) ((uint16_t)(c##UL))
+#define UINT32_C(c) ((uint32_t)(c##UL))
+#define UINT64_C(c) (c##ULL)
 #else /* WITH_STDLIB */
 
 /*

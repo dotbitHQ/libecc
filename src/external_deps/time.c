@@ -23,25 +23,26 @@
 
 int get_ms_time(u64 *time)
 {
-	struct timeval tv;
-	int ret;
-
-	if (time == NULL) {
-		ret = -1;
-		goto err;
-	}
-
-	ret = gettimeofday(&tv, NULL);
-	if (ret < 0) {
-		ret = -1;
-		goto err;
-	}
-
-	(*time) = (u64)(((tv.tv_sec) * 1000) + ((tv.tv_usec) / 1000));
-	ret = 0;
-
-err:
-	return ret;
+//	struct timeval tv;
+//	int ret;
+//
+//	if (time == NULL) {
+//		ret = -1;
+//		goto err;
+//	}
+//
+//	ret = gettimeofday(&tv, NULL);
+//	if (ret < 0) {
+//		ret = -1;
+//		goto err;
+//	}
+//
+//	(*time) = (u64)(((tv.tv_sec) * 1000) + ((tv.tv_usec) / 1000));
+//	ret = 0;
+//
+//err:
+//	return ret;
+    return 0;
 }
 
 /* Windows case */

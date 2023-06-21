@@ -25,7 +25,8 @@ endif
 EXEC_TO_CLEAN = $(BUILD_DIR)/ec_self_tests $(BUILD_DIR)/ec_utils $(BUILD_DIR)/ec_self_tests_dyn $(BUILD_DIR)/ec_utils_dyn
 
 # all and clean, as you might expect
-all: $(LIBS) $(TESTS_EXEC)
+#all: $(LIBS) $(TESTS_EXEC)
+all: $(LIBS)
 
 # Default object files extension
 OBJ_FILES_EXTENSION ?= o

@@ -19,7 +19,7 @@
 /* Explicitly include the inttypes here */
 #ifdef WITH_STDLIB
 /* We include inttypes.h for the PRI* macros */
-#include <inttypes.h>
+//#include <inttypes.h>
 #endif
 
 #if (__GNUC__ * 10 + __GNUC_MINOR__ >= 42)
